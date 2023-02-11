@@ -6,6 +6,7 @@ const openai = new OpenAIApi(configuration);
 
 const generateImage = async (req, res) => {
    const { prompt, size } = req.body;
+   console.log('this size if coming front react   '+prompt, size)
    const imageSize =
      size === "small" ? "256x256" : size === "medium" ? "512x512" : "1024x1024";
   try {
@@ -16,7 +17,7 @@ const generateImage = async (req, res) => {
   });
   image_url = response.data.data[0].url;
   console.log(image_url)
-    res.status(201).send({ message: "success", data: imageUrl });
+    res.status(201).send({ message: "success", data: image_url });
 
 
   } catch (error) {
